@@ -1,0 +1,41 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/record" method="POST" autocomplete="off">
+    <input type="hidden" name="_id" value="{{record._id}}">
+    <div class="form-group col-8">
+        <label><strong>Item</strong></label>
+        <input type="text" class="form-control" name='item' placeholder="Item..." value="{{record.item}}">
+        <div class="text-danger">
+            {{record.itemError}}
+        </div>
+    </div>
+    <div class="form-group col-8">
+        <label><strong>To Whom</strong></label>
+        <input type="text" class="form-control" name='toWhom' placeholder="Name..." value="{{record.toWhom}}">
+        <div class="text-danger">
+            {{record.toWhomError}}
+        </div>
+    </div>
+    <div class="form-group col-8">
+        <label><strong>Email</strong></label>
+        <input type="email" class="form-control" name='email' placeholder="Email..." value="{{record.email}}">
+    </div>
+    <div class="form-group col-3">
+        <label><strong>When</strong></label>
+        <input type="date" class="form-control" name="when" value="{{formatDate record.when}}">
+    </div>
+    <div class="form-group col-3">
+        <label><strong>Deadline</strong></label>
+        <input type="date" class="form-control" name="deadline" value="{{formatDate record.deadline}}">
+    </div>
+    <div class="form-group col-8">
+        <label><strong>Comments</strong></label>
+        <input type="text" class="form-control" name='comments' placeholder="Write comments here..."
+            value="{{record.comments}}">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+        <a class="btn btn-secondary" href="/record/list">List</a>
+    </div>
+</form>

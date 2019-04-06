@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    container_name: lending_app
+    restart: always
+    build: .
+    depends_on:
+      - mongo
+    ports:
+      - '80:3000'
+    links:
+      - mongo
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://mongo:27017/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3   
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
