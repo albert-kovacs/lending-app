@@ -11,5 +11,9 @@ pipeline {
                 sh "npm run lint"
             }
         }
+        stage('Checkout') {
+        sshagent(['git@github.com:albert-kovacs/test.git']) {
+        sh "git push origin master"
+        }
     }
 }
