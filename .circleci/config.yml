@@ -29,4 +29,5 @@ jobs:
 
       - run: npm run lint
       - run: npm run unit
+      
       - run: npm run test:e2e
