@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  selenium:
     docker:
       - image: circleci/openjdk:8-jdk-browsers
     steps:
@@ -14,7 +14,8 @@ jobs:
       - run:
           name: Start Selenium
           command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
-
+          background: true
+  test:
     docker:
       - image: circleci/node:11.13.0
     steps:
@@ -25,4 +26,8 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
+      - selenium
+      - test:
+          requires:
+            - selenium
+
