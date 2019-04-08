@@ -12,7 +12,7 @@ app.use(bodyparser.urlencoded({
     extended: true
 }));
 
-app.use(bodyparser.json())
+app.use(bodyparser.json());;
 
 app.set('views', path.join(__dirname, '/views/'));
 
