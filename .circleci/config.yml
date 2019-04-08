@@ -5,7 +5,8 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:11.13.0
       - image: circleci/mongo:3.4.20
-      
+    docker:  
+      - image: circleci/openjdk:8-jdk-browsers
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -31,7 +32,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: mkdir test-reports
-      - image: circleci/openjdk:8-jdk-browsers
+
       - run:
           name: Download Selenium
           command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
