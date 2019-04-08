@@ -10,7 +10,7 @@ jobs:
         environment:
           HUB_PORT_4444_TCP_ADDR: hub
           HUB_PORT_4444_TCP_PORT: 4444
-      - image: circleci/openjdk:8-*
+      - image: circleci/openjdk:8u171-jdk
     
     working_directory: ~/repo
 
