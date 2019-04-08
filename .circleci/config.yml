@@ -5,15 +5,15 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:11.13.0
       - image: circleci/mongo:3.4.20
-    docker:  
-      - image: circleci/openjdk:8-jdk-browsers
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
-
+  test:
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
     steps:
       - checkout
 
