@@ -24,6 +24,9 @@ jobs:
             - v1-dependencies-
 
       - run: npm install
+      - run: java -version
+
+
 
       - save_cache:
           paths:
