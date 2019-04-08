@@ -1,9 +1,9 @@
-process.env.NODE_ENV = 'test';
+// process.env.NODE_ENV = 'test';
 
-const assert = require('assert');
+// const assert = require('assert');
 
-const mongoose = require('mongoose');
-const Record = mongoose.model('Record');
+// const mongoose = require('mongoose');
+// const Record = mongoose.model('Record');
 
 // beforeEach((done) => {
 //     let record = new Record({
@@ -18,14 +18,14 @@ const Record = mongoose.model('Record');
 //         .then(() => done());
 // });
 
-describe('testing read functions', () => {
-    it('reads a record from database', (done) => {
-        Record.findOne({
-            item: 'a book'
-        })
-            .then((record) => {
-                assert(record.item === 'a book');
-                done();
-            });
-    });
-});
+// describe('testing read functions', () => {
+//     it('reads a record from database', (done) => {
+//         Record.findOne({
+//             item: 'a book'
+//         })
+//             .then((record) => {
+//                 assert(record.item === 'a book');
+//                 done();
+//             });
+//     });
+// });

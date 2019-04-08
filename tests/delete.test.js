@@ -1,11 +1,11 @@
-process.env.NODE_ENV = 'test';
+// process.env.NODE_ENV = 'test';
 
-const assert = require('assert');
+// const assert = require('assert');
 
-const mongoose = require('mongoose');
-const Record = mongoose.model('Record');
+// const mongoose = require('mongoose');
+// const Record = mongoose.model('Record');
 
-let record;
+// let record;
 
 // beforeEach((done) => {
 //     record = new Record({
@@ -20,15 +20,15 @@ let record;
 //         .then(() => done());
 // });
 
-describe('deleting a record', () => {
-    it('removes a record using its instance', (done) => {
-        Record.deleteMany()
-            .then(() => Record.findOne({
-                item: 'a book'
-            }))
-            .then((record) => {
-                assert(record === null);
-                done();
-            }).catch(done);
-    });
-});
+// describe('deleting a record', () => {
+//     it('removes a record using its instance', (done) => {
+//         Record.deleteMany()
+//             .then(() => Record.findOne({
+//                 item: 'a book'
+//             }))
+//             .then((record) => {
+//                 assert(record === null);
+//                 done();
+//             }).catch(done);
+//     });
+// });
