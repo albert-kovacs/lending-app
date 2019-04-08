@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
-  test:
+  selenium:
     docker:
       - image: circleci/openjdk:8-jdk-browsers
     steps:
@@ -21,6 +21,10 @@ jobs:
           name: Start Selenium
           command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
           background: true
+  test:
+    steps:
+      - checkout
+
       - run: npm run test:e2e    
 workflows:
   version: 2
