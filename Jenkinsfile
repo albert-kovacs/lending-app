@@ -14,7 +14,7 @@ pipeline {
         stage('Push to new repo') {
             steps {
                 sshagent(['git@github.com:albert-kovacs/test.git']) {
-                sh "git push origin master"
+                    sh "git push origin master"
                 }
             }
         }
