@@ -37,16 +37,16 @@ jobs:
       - run:
         - name: Create Selenium Log
         - command: mkdir browser-test-reports
-  - run:
+      - run:
         - name: Download Selenium & Geckodriver
         - command: |
         curl -O http://selenium-release.storage.googleapis.com/3.11/selenium-server-standalone-3.11.0.jar
         curl -L https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz | tar xz
         chmod +x geckodriver
-  - run: 
-      - name: Spinup Selenium Server and set Gecko Driver
-      - command: java -jar -Dwebdriver.gecko.driver=./geckodriver selenium-server-standalone-3.11.0.jar -log browser-test-reports/selenium.log -port 4444
-      - background: true
+      - run: 
+        - name: Spinup Selenium Server and set Gecko Driver
+        - command: java -jar -Dwebdriver.gecko.driver=./geckodriver selenium-server-standalone-3.11.0.jar -log browser-test-reports/selenium.log -port 4444
+        - background: true
 
 
       - run: npm run test:e2e
