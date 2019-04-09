@@ -18,6 +18,7 @@ jobs:
           background: true
   test:
     docker:
+      - image: circleci/mongo:3.4.4
       - image: circleci/node:11.13.0
     steps:
       - checkout
