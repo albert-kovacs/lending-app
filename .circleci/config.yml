@@ -9,6 +9,8 @@ jobs:
 
       - run: npm install
 
+      - run: npm start
+
       # run tests!
       - run: npm run test:e2e
 
