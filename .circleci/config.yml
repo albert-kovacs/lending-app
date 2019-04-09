@@ -2,38 +2,21 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:11.13.0
-      - image: selenium/hub
-        name: hub
-      - image: selenium/node-firefox
-        environment:
-          HUB_PORT_4444_TCP_ADDR: hub
-          HUB_PORT_4444_TCP_PORT: 4444
-    working_directory: ~/repo
+      - image: klamping/wdio-ff
+
+    environment:
+      GIT_URL: "git@github.com:albert-kovacs/lending-app.git"
+      BRANCH: "master"
+
     steps:
       - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
       - run: npm install
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
       - run:
-          command: npm run start
+          command: cd react/fixtures/dom && yarn start
           background: true
-        
+
       # run tests!
       - run: npm run test:e2e
 
-      - store_artifacts:
-          path: ./errorShots/
-          when: always
