@@ -13,10 +13,10 @@ var recordSchema = new mongoose.Schema({
         type: String
     },
     when: {
-        type: Date
+        type: String
     },
     deadline: {
-        type: Date
+        type: String
     },
     comments: {
         type: String
