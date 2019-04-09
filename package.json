@@ -8,7 +8,7 @@
     "stop": "killall node",
     "test": "./node_modules/.bin/eslint ./ & mocha tests/*.js --exit --timeout 10000 & sleep 3 && wdio",
     "unit": "mocha tests/*.js --exit --timeout 10000",
-    "test:e2e": "wdio",
+    "test:e2e": "wdio --timeout 10000",
     "lint": "./node_modules/.bin/eslint ./",
     "allure:generate": "npx allure generate --clean"
   },
