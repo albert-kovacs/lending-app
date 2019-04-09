@@ -8,6 +8,8 @@ jobs:
       - checkout
 
       - run: npm install
-      
+
+      - run: npm start
+
       - run: npm run test:e2e
 
