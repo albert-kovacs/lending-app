@@ -16,9 +16,13 @@ jobs:
           name: Start Selenium
           command: java -jar selenium-server-standalone-3.5.3.jar
           background: true
-  test:
+  mongodb:
     docker:
       - image: circleci/mongo:3.4.20
+    steps:
+      - checkout  
+  test:
+    docker:
       - image: circleci/node:11.13.0
     steps:
       - checkout
@@ -35,7 +39,9 @@ workflows:
   build_and_test:
     jobs:
       - selenium
+      - mongodb
       - test:
           requires:
             - selenium
+            - mongodb
 
