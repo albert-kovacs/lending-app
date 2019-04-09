@@ -5,11 +5,10 @@ jobs:
       - image: circleci/node:11.13.0
     steps:
       - checkout
+      - run: npm install
+
 
       - run: npm start selenium
-
-      
-      - run: npm install
 
       - run: npm run test:e2e    
 
