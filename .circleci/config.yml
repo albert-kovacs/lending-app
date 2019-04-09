@@ -22,7 +22,8 @@ jobs:
     steps:
       - checkout
 
-      - run: java -version
+      - run: npm start selenium
+
       
       - run: npm install
 
