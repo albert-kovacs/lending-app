@@ -10,7 +10,8 @@ var recordSchema = new mongoose.Schema({
         required: 'This field is required.'
     },
     email: {
-        type: String
+        type: String,
+        required: 'This field is required.'
     },
     when: {
         type: String

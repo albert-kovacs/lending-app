@@ -102,6 +102,15 @@ function handleValidationError (err, body) {
         case 'toWhom':
             body['toWhomError'] = err.errors[field].message;
             break;
+        case 'email':
+            body['emailError'] = err.errors[field].message;
+            break;
+        case 'when':
+            body['whenError'] = err.errors[field].message;
+            break;
+        case 'deadline':
+            body['deadlineError'] = err.errors[field].message;
+            break;
         default:
             break;
         }

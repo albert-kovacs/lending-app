@@ -19,14 +19,23 @@
     <div class="form-group col-8">
         <label><strong>Email</strong></label>
         <input type="email" class="form-control" name='email' placeholder="Email..." value="{{record.email}}">
+        <div class="text-danger">
+            {{record.emailError}}
+        </div>
     </div>
     <div class="form-group col-3">
         <label><strong>When</strong></label>
         <input type="date" class="form-control" name="when" value="{{formatDate record.when}}">
+        <div class="text-danger">
+            {{record.whenError}}
+        </div>
     </div>
     <div class="form-group col-3">
         <label><strong>Deadline</strong></label>
         <input type="date" class="form-control" name="deadline" value="{{formatDate record.deadline}}">
+        <div class="text-danger">
+            {{record.deadlineError}}
+        </div>
     </div>
     <div class="form-group col-8">
         <label><strong>Comments</strong></label>
