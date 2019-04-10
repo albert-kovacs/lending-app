@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 var item, toWhom, email, when, deadline, mailOptions;
 
 var actualDate = new Date().toJSON().slice(0, 10);
-// actualDate = '2019-04-10'
+// actualDate = '2019-04-10';
 
 cron.schedule('*/10 * * * * *', function () {
     console.log('---------------------');
