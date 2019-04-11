@@ -5,13 +5,15 @@ const nodemailer = require('nodemailer');
 var item, toWhom, email, when, deadline, mailOptions;
 
 var actualDate = new Date().toJSON().slice(0, 10);
-// actualDate = '2019-04-10';
+// actualDate = '2019-04-10'
 
 cron.schedule('*/10 * * * * *', function () {
     console.log('---------------------');
     console.log('Running Cron Job');
+
     Record.findOne({
-        deadline: actualDate
+        deadline: actualDate,
+        notified: false
     })
         .then((record) => {
             item = record.item;
@@ -43,11 +45,19 @@ cron.schedule('*/10 * * * * *', function () {
                         return console.log(error);
                     }
                     console.log('Message sent: %s', info.messageId);
+                    Record.updateOne({
+                        deadline: actualDate
+                    }, {
+                        '$set': {
+                            'notified': true
+                        }
+                    }, function () {
+                        console.log('"notified" property set to false');
+                    });
                 });
-
-                // record.delete();
             });
-        }).catch(() => {
+        })
+        .catch(() => {
             console.log('---------------------');
             console.log('no item to return');
         });

@@ -21,6 +21,10 @@ var recordSchema = new mongoose.Schema({
     },
     comments: {
         type: String
+    },
+    notified: {
+        type: Boolean,
+        default: false
     }
 });
 

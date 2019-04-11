@@ -5,7 +5,7 @@ const path = require('path');
 const moment = require('moment');
 const recordController = require('./controllers/recordController');
 var app = express();
-require('./notification');
+// require('./notification');
 
 app.use(bodyparser.urlencoded({
     extended: true

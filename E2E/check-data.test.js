@@ -35,6 +35,6 @@ describe(`Test data`, function () {
 
         $('a:nth-child(2) > i').click();
 
-        browser.acceptAlert();
+        browser.alertAccept();
     });
 });

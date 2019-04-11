@@ -1,3 +1,19 @@
+var path = require('path');
+var VisualRegressionCompare = require('wdio-visual-regression-service/compare');
+
+function getScreenshotName (basePath) {
+    return function (context) {
+        var type = context.type;
+        var testName = context.test.title;
+        var browserVersion = parseInt(context.browser.version, 10);
+        var browserName = context.browser.name;
+        var browserViewport = context.meta.viewport;
+        var browserWidth = browserViewport.width;
+        var browserHeight = browserViewport.height;
+
+        return path.join(basePath, `${testName}_${type}_${browserName}_v${browserVersion}_${browserWidth}x${browserHeight}.png`);
+    };
+}
 exports.config = {
     //
     // ====================
@@ -18,7 +34,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './E2E/*'
+        './E2E/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -105,7 +121,20 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['selenium-standalone'],
+    services: ['selenium-standalone', 'visual-regression'],
+
+    visualRegression: {
+        compare: new VisualRegressionCompare.LocalCompare({
+            referenceName: getScreenshotName(path.join(process.cwd(), 'screenshots/reference')),
+            screenshotName: getScreenshotName(path.join(process.cwd(), 'screenshots/screen')),
+            diffName: getScreenshotName(path.join(process.cwd(), 'screenshots/diff')),
+            misMatchTolerance: 2
+        }),
+        viewportChangePause: 300,
+        viewports: [{ width: 1024, height: 768 }],
+        orientations: ['landscape']
+    },
+    // ...
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -121,12 +150,12 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec', ['allure', {
-        outputDir: 'allure-results',
-        disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: true
-    }]],
-
+    // reporters: ['spec', ['allure', {
+    //     outputDir: 'allure-results',
+    //     disableWebdriverStepsReporting: true,
+    //     disableWebdriverScreenshotsReporting: true
+    // }]],
+    reporters: ['spec'],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
