@@ -1,15 +1,20 @@
+const log4js = require('log4js');
+const { traceLogConfig } = require('./config/app-settings').log4js;
+log4js.configure(traceLogConfig);
+const logger = log4js.getLogger();
+
 const cron = require('node-cron');
 const mongoose = require('mongoose');
 const Record = mongoose.model('Record');
 const nodemailer = require('nodemailer');
-var item, toWhom, email, when, deadline, mailOptions;
+var item, toWhom, email, when, mailOptions;
 
 var actualDate = new Date().toJSON().slice(0, 10);
 // actualDate = '2019-04-10'
 
-cron.schedule('*/10 * * * * *', function () {
+cron.schedule('*/100 * * * * *', function () {
     console.log('---------------------');
-    console.log('Running Cron Job');
+    logger.info('Running Cron Job');
 
     Record.findOne({
         deadline: actualDate,
@@ -20,13 +25,12 @@ cron.schedule('*/10 * * * * *', function () {
             toWhom = record.toWhom;
             email = record.email;
             when = record.when;
-            deadline = record.deadline;
 
             mailOptions = {
                 from: 'Lending App <lending.app.notice@gmail.com>',
                 to: email,
                 subject: 'Hello ' + toWhom,
-                text: 'It\'s ' + deadline + '. Please give me back my ' + item + ' you borrowed on ' + when + ' ASAP!'
+                text: 'Please give me back my ' + item + ' you borrowed on ' + when + '.'
             };
 
             nodemailer.createTestAccount((account) => {
@@ -42,9 +46,9 @@ cron.schedule('*/10 * * * * *', function () {
 
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
-                        return console.log(error);
+                        logger.error(error);
                     }
-                    console.log('Message sent: %s', info.messageId);
+                    logger.info('Message sent: %s', info.messageId);
                     Record.updateOne({
                         deadline: actualDate
                     }, {
@@ -52,13 +56,13 @@ cron.schedule('*/10 * * * * *', function () {
                             'notified': true
                         }
                     }, function () {
-                        console.log('"notified" property set to false');
+                        logger.info('"notified" property set to false');
                     });
                 });
             });
         })
         .catch(() => {
             console.log('---------------------');
-            console.log('no item to return');
+            logger.info('no item to return');
         });
 });

@@ -1,3 +1,8 @@
+const log4js = require('log4js');
+const { traceLogConfig } = require('../config/app-settings').log4js;
+log4js.configure(traceLogConfig);
+const logger = log4js.getLogger();
+
 const express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
@@ -28,6 +33,7 @@ function insertRecords (req, res) {
     record.save((err, doc) => {
         if (!err) {
             res.redirect('record/list');
+            logger.info('Record inserted.');
         } else {
             if (err.name === 'ValidationError') {
                 handleValidationError(err, req.body);
@@ -36,7 +42,7 @@ function insertRecords (req, res) {
                     record: req.body
                 });
             }
-            console.log('Error during record insertion : ' + err);
+            logger.error('Error during record insertion : ' + err);
         }
     });
 }
@@ -49,13 +55,14 @@ function updateRecord (req, res) {
     }, (err, doc) => {
         if (!err) {
             res.redirect('record/list');
+            logger.info('Record updated.');
         } else {
             handleValidationError(err, req.body);
             res.render('pages/add', {
                 viewTitle: 'Add',
                 record: req.body
             });
-            console.log('Error during record update : ' + err);
+            logger.error('Error during record update : ' + err);
         }
     });
 }
@@ -66,8 +73,9 @@ router.get('/list', (req, res) => {
             res.render('pages/list', {
                 list: docs
             });
+            logger.info('Records list retrieved.');
         } else {
-            console.log('Error in retrieving records list :' + err);
+            logger.error('Error in retrieving records list :' + err);
         }
     });
 });
@@ -79,6 +87,7 @@ router.get('/:id', (req, res) => {
                 viewTitle: 'Update Item',
                 record: doc
             });
+            logger.info('Record retrieved.');
         }
     });
 });
@@ -87,8 +96,9 @@ router.get('/delete/:id', (req, res) => {
     Record.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.redirect('/record/list');
+            logger.info('Record deleted.');
         } else {
-            console.log('Error in deleting record :' + err);
+            logger.error('Error in deleting record :' + err);
         }
     });
 });

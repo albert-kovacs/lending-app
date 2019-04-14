@@ -22,8 +22,11 @@ exports.config = {
     //
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
-    runner: 'local',
+    // runner: 'local',
 
+    // user: process.env.SAUCE_USERNAME,
+    // key: process.env.SAUCE_ACCESS_KEY,
+    // sauceConnect: true,
     //
     // ==================
     // Specify Test Files
@@ -34,7 +37,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './E2E/specs/**/*.js'
+        './E2E/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -121,14 +124,20 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['selenium-standalone', 'visual-regression'],
+    services: ['sauce', 'selenium-standalone', 'visual-regression'],
+    // services: ['sauce'],
+    // user: process.env.SAUCE_USERNAME,
+    // key: process.env.SAUCE_ACCESS_KEY,
+    // sauceSeleniumAddress: 'https://ondemand.eu-central-1.saucelabs.com',
+
+    // sauceConnect: false,
 
     visualRegression: {
         compare: new VisualRegressionCompare.LocalCompare({
             referenceName: getScreenshotName(path.join(process.cwd(), 'screenshots/reference')),
             screenshotName: getScreenshotName(path.join(process.cwd(), 'screenshots/screen')),
             diffName: getScreenshotName(path.join(process.cwd(), 'screenshots/diff')),
-            misMatchTolerance: 2
+            misMatchTolerance: 0.01
         }),
         viewportChangePause: 300,
         viewports: [{ width: 1024, height: 768 }],

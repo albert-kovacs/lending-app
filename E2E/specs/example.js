@@ -1,6 +1,6 @@
 let expect = require('chai').expect;
 
-function expectGoodThings (results) {
+function evaluate (results) {
     results.forEach((result) => expect(result.isExactSameImage, 'image is not the same').to.be.true);
 }
 
@@ -16,6 +16,6 @@ describe('example', function () {
 
         let report = browser.checkElement('body');
 
-        expectGoodThings(report);
+        evaluate(report);
     });
 });
