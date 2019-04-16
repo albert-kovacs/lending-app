@@ -10,7 +10,7 @@ const Record = mongoose.model('Record');
 
 router.get('/', (req, res) => {
     res.render('pages/add', {
-        viewTitle: 'Add'
+        viewTitle: 'ADD NEW ITEM'
     });
 });
 

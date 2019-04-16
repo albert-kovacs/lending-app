@@ -1,0 +1,23 @@
+body {
+    background-image: url(back.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    filter: brightness(85%);
+}
+
+h3 {
+    text-align: center;
+    font-family: 'Corben', Georgia, Times, serif;
+}
+
+.btn-info, .btn-secondary {
+    color: black;
+    font: bold 17px arial, sans-serif;
+}
+
+.form-control {
+    opacity: 0.9;
+
+}

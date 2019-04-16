@@ -14,10 +14,10 @@ var recordSchema = new mongoose.Schema({
         required: 'This field is required.'
     },
     when: {
-        type: String
+        type: Date
     },
     deadline: {
-        type: String
+        type: Date
     },
     comments: {
         type: String

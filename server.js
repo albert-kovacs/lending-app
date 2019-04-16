@@ -5,13 +5,15 @@ const path = require('path');
 const moment = require('moment');
 const recordController = require('./controllers/recordController');
 var app = express();
-require('./notification');
+// require('./notification');
 
 app.use(bodyparser.urlencoded({
     extended: true
 }));
 
 app.use(bodyparser.json());
+
+app.use(express.static('public'));
 
 app.set('views', path.join(__dirname, '/views/'));
 
@@ -21,7 +23,7 @@ app.engine('hbs', exphbs({
     layoutsDir: path.join(__dirname, '/views/layouts/'),
     helpers: {
         formatDate: function (date, format) {
-            return moment(date).format('MM/DD/YYYY');
+            return moment(date).format('MM-DD-YYYY');
         }
     }
 }));

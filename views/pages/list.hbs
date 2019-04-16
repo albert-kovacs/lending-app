@@ -1,14 +1,14 @@
-<h3><a class="btn btn-secondary" href="/record">New Item</a> List of lent items</h3>
+<h3>LIST OF LENT ITEMS</h3>
 
 <table class="table table-striped">
     <thread>
         <tr>
-            <th>Item</th>
-            <th>To Whom</th>
-            <th>Email</th>
-            <th>When</th>
-            <th>Deadline</th>
-            <th>Comments</th>
+            <th>ITEM</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>WHEN</th>
+            <th>DEADLINE</th>
+            <th>COMMENTS</th>
             <th></th>
         </tr>
     </thread>
@@ -23,10 +23,14 @@
             <td>{{this.comments}}</td>
             <td>
                 <a href="/record/{{this._id}}"><i class="fas fa-pencil-alt fa-lg"></i></a>
-                <a href="/record/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record?');"><i
-                        class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                <a href="/record/delete/{{this._id}}"
+                    onclick="return confirm('Are you sure to delete this record?');"><i class="fa fa-trash fa-lg"
+                        aria-hidden="true"></i></a>
             </td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+<div class="form-group">
+    <a class="btn btn-secondary" href="/record">New Item</a>
+</div>

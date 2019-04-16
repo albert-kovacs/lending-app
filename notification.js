@@ -10,14 +10,14 @@ const nodemailer = require('nodemailer');
 var item, toWhom, email, when, mailOptions;
 
 var actualDate = new Date().toJSON().slice(0, 10);
-// actualDate = '2019-04-10'
+var actualDateFixedFormat = new Date(actualDate);
 
-cron.schedule('*/100 * * * * *', function () {
+cron.schedule('*/30 * * * * *', function () {
     console.log('---------------------');
     logger.info('Running Cron Job');
 
     Record.findOne({
-        deadline: actualDate,
+        deadline: actualDateFixedFormat,
         notified: false
     })
         .then((record) => {
@@ -56,7 +56,7 @@ cron.schedule('*/100 * * * * *', function () {
                             'notified': true
                         }
                     }, function () {
-                        logger.info('"notified" property set to false');
+                        logger.info('"notified" property set to true');
                     });
                 });
             });

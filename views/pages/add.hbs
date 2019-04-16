@@ -2,43 +2,43 @@
 
 <form action="/record" method="POST" autocomplete="off">
     <input type="hidden" name="_id" value="{{record._id}}">
-    <div class="form-group col-8">
-        <label><strong>Item</strong></label>
+    <div class="form-group col-10">
+        <label><strong>ITEM</strong></label>
         <input type="text" class="form-control" name='item' placeholder="Item..." value="{{record.item}}">
         <div class="text-danger">
             {{record.itemError}}
         </div>
     </div>
-    <div class="form-group col-8">
-        <label><strong>To Whom</strong></label>
+    <div class="form-group col-10">
+        <label><strong>NAME</strong></label>
         <input type="text" class="form-control" name='toWhom' placeholder="Name..." value="{{record.toWhom}}">
         <div class="text-danger">
             {{record.toWhomError}}
         </div>
     </div>
-    <div class="form-group col-8">
-        <label><strong>Email</strong></label>
+    <div class="form-group col-10">
+        <label><strong>EMAIL</strong></label>
         <input type="email" class="form-control" name='email' placeholder="Email..." value="{{record.email}}">
         <div class="text-danger">
             {{record.emailError}}
         </div>
     </div>
     <div class="form-group col-3">
-        <label><strong>When</strong></label>
-        <input type="date" class="form-control" name="when" value="{{formatDate record.when}}">
+        <label><strong>WHEN</strong></label>
+        <input type="date" class="form-control" id="when" name="when" value="{{formatDate record.when}}">
         <div class="text-danger">
             {{record.whenError}}
         </div>
     </div>
     <div class="form-group col-3">
-        <label><strong>Deadline</strong></label>
-        <input type="date" class="form-control" name="deadline" value="{{formatDate record.deadline}}">
+        <label><strong>DEADLINE</strong></label>
+        <input type="date" class="form-control" id="deadline" name="deadline" value="{{formatDate record.deadline}}">
         <div class="text-danger">
             {{record.deadlineError}}
         </div>
     </div>
-    <div class="form-group col-8">
-        <label><strong>Comments</strong></label>
+    <div class="form-group col-10">
+        <label><strong>COMMENTS</strong></label>
         <input type="text" class="form-control" name='comments' placeholder="Write comments here..."
             value="{{record.comments}}">
     </div>
