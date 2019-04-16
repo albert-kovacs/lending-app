@@ -3,6 +3,8 @@ const { traceLogConfig } = require('./config/app-settings').log4js;
 log4js.configure(traceLogConfig);
 const logger = log4js.getLogger();
 
+const creds = require('./gmail_creds');
+
 const cron = require('node-cron');
 const mongoose = require('mongoose');
 const Record = mongoose.model('Record');
@@ -35,12 +37,12 @@ cron.schedule('*/30 * * * * *', function () {
 
             nodemailer.createTestAccount((account) => {
                 let transporter = nodemailer.createTransport({
-                    host: 'smtp.googlemail.com',
+                    host: creds.HOST,
                     port: 465,
                     secure: true,
                     auth: {
-                        user: 'lending.app.notice@gmail.com',
-                        pass: 'xdciypgenulukfhu'
+                        user: creds.USERNAME,
+                        pass: creds.PASSWORD
                     }
                 });
 
