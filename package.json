@@ -9,6 +9,7 @@
     "test": "./node_modules/.bin/eslint ./ & mocha tests/*.js --exit --timeout 10000 & sleep 3 && wdio",
     "unit": "mocha tests/*.js --exit --timeout 10000",
     "test:e2e": "wdio",
+    "test:cucumber": "wdio",
     "lint": "./node_modules/.bin/eslint ./",
     "lint-fix": "npm run lint -- --fix",
     "allure:generate": "npx allure generate --clean"
@@ -48,6 +49,7 @@
     "log4js": "^4.1.0",
     "mockgoose": "^8.0.1",
     "wdio-allure-reporter": "^0.8.3",
+    "wdio-cucumber-framework": "^2.2.8",
     "wdio-mocha-framework": "^0.6.4",
     "wdio-sauce-service": "^0.4.14",
     "wdio-selenium-standalone-service": "0.0.12",
