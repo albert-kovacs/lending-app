@@ -1,7 +1,7 @@
 let expect = require('chai').expect;
 
 function evaluate (results) {
-    results.forEach((result) => expect(result.isExactSameImage, 'image is not the same').to.be.true);
+    results.forEach((result) => expect(result.isExactSameImage, 'image is not the same').to.be.false);
 }
 
 describe('example', function () {
