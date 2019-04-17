@@ -136,17 +136,17 @@ exports.config = {
 
     // sauceConnect: false,
 
-    // visualRegression: {
-    //     compare: new VisualRegressionCompare.LocalCompare({
-    //         referenceName: getScreenshotName(path.join(process.cwd(), 'screenshots/reference')),
-    //         screenshotName: getScreenshotName(path.join(process.cwd(), 'screenshots/screen')),
-    //         diffName: getScreenshotName(path.join(process.cwd(), 'screenshots/diff')),
-    //         misMatchTolerance: 0.01
-    //     }),
-    //     viewportChangePause: 300,
-    //     viewports: [{ width: 1024, height: 768 }],
-    //     orientations: ['landscape']
-    // },
+    visualRegression: {
+        compare: new VisualRegressionCompare.LocalCompare({
+            referenceName: getScreenshotName(path.join(process.cwd(), 'screenshots/reference')),
+            screenshotName: getScreenshotName(path.join(process.cwd(), 'screenshots/screen')),
+            diffName: getScreenshotName(path.join(process.cwd(), 'screenshots/diff')),
+            misMatchTolerance: 0.01
+        }),
+        viewportChangePause: 300,
+        viewports: [{ width: 1024, height: 768 }],
+        orientations: ['landscape']
+    },
     // ...
     //
     // Framework you want to run your specs with.
