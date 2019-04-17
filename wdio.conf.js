@@ -74,7 +74,7 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'chrome'
+        browserName: 'firefox'
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -136,17 +136,17 @@ exports.config = {
 
     // sauceConnect: false,
 
-    visualRegression: {
-        compare: new VisualRegressionCompare.LocalCompare({
-            referenceName: getScreenshotName(path.join(process.cwd(), 'screenshots/reference')),
-            screenshotName: getScreenshotName(path.join(process.cwd(), 'screenshots/screen')),
-            diffName: getScreenshotName(path.join(process.cwd(), 'screenshots/diff')),
-            misMatchTolerance: 0.01
-        }),
-        viewportChangePause: 300,
-        viewports: [{ width: 1024, height: 768 }],
-        orientations: ['landscape']
-    },
+    // visualRegression: {
+    //     compare: new VisualRegressionCompare.LocalCompare({
+    //         referenceName: getScreenshotName(path.join(process.cwd(), 'screenshots/reference')),
+    //         screenshotName: getScreenshotName(path.join(process.cwd(), 'screenshots/screen')),
+    //         diffName: getScreenshotName(path.join(process.cwd(), 'screenshots/diff')),
+    //         misMatchTolerance: 0.01
+    //     }),
+    //     viewportChangePause: 300,
+    //     viewports: [{ width: 1024, height: 768 }],
+    //     orientations: ['landscape']
+    // },
     // ...
     //
     // Framework you want to run your specs with.
