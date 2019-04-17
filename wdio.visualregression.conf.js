@@ -23,10 +23,6 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     // runner: 'local',
-
-    // user: process.env.SAUCE_USERNAME,
-    // key: process.env.SAUCE_ACCESS_KEY,
-    // sauceConnect: true,
     //
     // ==================
     // Specify Test Files
@@ -37,11 +33,8 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './E2E/**/*.js'
+        './visual_regression_specs/**/*.js'
     ],
-    // specs: [
-    //     './features/**/*.feature'
-    // ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -127,14 +120,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: ['selenium-standalone'],
-    services: ['selenium-standalone', 'visual-regression'],
-    // services: ['sauce'],
-    // user: process.env.SAUCE_USERNAME,
-    // key: process.env.SAUCE_ACCESS_KEY,
-    // sauceSeleniumAddress: 'https://ondemand.eu-central-1.saucelabs.com',
-
-    // sauceConnect: false,
+    services: ['visual-regression'],
 
     visualRegression: {
         compare: new VisualRegressionCompare.LocalCompare({
@@ -155,8 +141,6 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
-    framework: 'mocha',
-    // framework: 'cucumber',
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
@@ -164,35 +148,10 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    // reporters: ['spec', ['allure', {
-    //     outputDir: 'allure-results',
-    //     disableWebdriverStepsReporting: true,
-    //     disableWebdriverScreenshotsReporting: true
-    // }]],
     reporters: ['spec'],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
-    mochaOpts: {
-        ui: 'bdd',
-        timeout: 60000
-    },
-    // cucumberOpts: {
-    //     require: ['./features/step-definitions/test-steps.js'], // <string[]> (file/dir) require files before executing features
-    //     backtrace: false, // <boolean> show full backtrace for errors
-    //     compiler: [], // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-    //     dryRun: false, // <boolean> invoke formatters without executing steps
-    //     failFast: false, // <boolean> abort the run on first failure
-    //     format: ['pretty'], // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
-    //     colors: true, // <boolean> disable colors in formatter output
-    //     snippets: true, // <boolean> hide step definition snippets for pending steps
-    //     source: true, // <boolean> hide source uris
-    //     profile: [], // <string[]> (name) specify the profile to use
-    //     strict: false, // <boolean> fail if there are any undefined or pending steps
-    //     tags: [], // <string[]> (expression) only execute the features or scenarios with tags matching the expression
-    //     timeout: 20000, // <number> timeout for step definitions
-    //     ignoreUndefinedDefinitions: false // <boolean> Enable this config to treat undefined definitions as warnings.
-    // },
     //
     // =====
     // Hooks

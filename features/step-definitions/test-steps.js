@@ -15,13 +15,11 @@ defineSupportCode(function ({
 
     When('I maximize the window size', () => {
         browser.windowHandleSize({ width: 2000, height: 1500 });
-        browser.pause(1000);
     });
 
     Then('I should get page title {string}', (text) => {
         const pageTitle = browser.getTitle();
         assert.strictEqual(pageTitle, text);
-        browser.pause(2000);
     });
 
     When('I click on the submit button', () => {
@@ -30,7 +28,6 @@ defineSupportCode(function ({
 
     Then('I should get error message {string}', (text) => {
         const error = $(`[class="text-danger"]`).getText();
-        browser.pause(1000);
         assert.strictEqual(error, text);
     });
 
@@ -51,12 +48,12 @@ defineSupportCode(function ({
 
     When('I click on the delete button', () => {
         $('a:nth-child(2) > i').click();
-        browser.pause(10000);
         browser.alertAccept();
+        browser.pause(1000)
     });
 
     Then('I check if item is removed', () => {
         let isExisting = browser.isExisting(`body > div > div > table > tbody:nth-child(2) > tr > td:nth-child(1)`);
-        assert.strictEqual(false, isExisting);
+        assert.equal(false, isExisting);
     });
 });
