@@ -1,4 +1,6 @@
-import { expect } from 'chai';
+import {
+    expect
+} from 'chai';
 
 describe(`Test data`, function () {
     it(`should get back correct data from "List" page`, () => {
@@ -10,10 +12,10 @@ describe(`Test data`, function () {
         $(`[name="toWhom"]`).setValue(toWhom);
         const email = 'john.doe@email.com';
         $(`[name="email"]`).setValue(email);
-        // const when = 01-01-2019;
-        // $(`[name="when"]`).setValue(when);
-        // const deadline = 03-01-2019;
-        // $(`[name="deadline"]`).setValue(deadline);
+        const when = '2019-01-01';
+        $(`[name="when"]`).setValue(when);
+        const deadline = '2019-03-01';
+        $(`[name="deadline"]`).setValue(deadline);
         const comments = 'some comments...';
         $(`[name="comments"]`).setValue(comments);
 
@@ -22,15 +24,15 @@ describe(`Test data`, function () {
         const itemBack = $(`td:nth-child(1)`).getText();
         const toWhomBack = $(`td:nth-child(2)`).getText();
         const emailBack = $(`td:nth-child(3)`).getText();
-        // const whenBack = $(`td:nth-child(4)`).getText();
-        // const deadlineBack = $(`td:nth-child(5)`).getText();
+        let whenBack = $(`td:nth-child(4)`).getText();
+        const deadlineBack = $(`td:nth-child(5)`).getText();
         const commentsBack = $(`td:nth-child(6)`).getText();
 
         expect(item).to.equal(itemBack);
         expect(toWhom).to.equal(toWhomBack);
         expect(email).to.equal(emailBack);
-        // expect(when).to.equal(whenBack);
-        // expect(deadline).to.equal(deadlineBack);
+        expect(when).to.equal(whenBack);
+        expect(deadline).to.equal(deadlineBack);
         expect(comments).to.equal(commentsBack);
 
         $('a:nth-child(2) > i').click();

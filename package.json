@@ -10,7 +10,7 @@
     "test:cucumber": "./node_modules/.bin/wdio wdio.cucumber.conf.js",
     "test:visualregression": "./node_modules/.bin/wdio wdio.visualregression.conf.js",
     "lint": "./node_modules/.bin/eslint ./",
-    "lint:fix": "npm run lint --fix",
+    "lint:fix": "./node_modules/.bin/eslint ./ --fix",
     "allure:generate": "npx allure generate --clean"
   },
   "author": "Albert Kovacs",
@@ -20,6 +20,8 @@
     "chai": "^4.2.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
+    "imap": "^0.8.19",
+    "mailslurp-client": "^3.0.14",
     "mocha": "^6.1.2",
     "moment": "^2.24.0",
     "mongoose": "^5.4.19",

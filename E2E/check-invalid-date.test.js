@@ -1,5 +1,9 @@
-describe(`Test data`, function () {
-    it(`should get back correct data from "List" page`, () => {
+import {
+    expect
+} from 'chai';
+
+describe(`Test invalid date`, function () {
+    it(`should get back "Invalid date" message from "List" page`, () => {
         browser.url('http://localhost:3000/record');
 
         const item = 'Book';
@@ -8,7 +12,7 @@ describe(`Test data`, function () {
         $(`[name="toWhom"]`).setValue(toWhom);
         const email = 'john.doe@email.com';
         $(`[name="email"]`).setValue(email);
-        const when = '2019-01-01';
+        const when = '01-01-2019';
         $(`[name="when"]`).setValue(when);
         const deadline = '2019-03-01';
         $(`[name="deadline"]`).setValue(deadline);
@@ -17,8 +21,8 @@ describe(`Test data`, function () {
 
         $('[type="submit"]').click();
 
-        $('a:nth-child(2) > i').click();
+        let whenBack = $(`td:nth-child(4)`).getText();
 
-        browser.alertAccept();
+        expect(whenBack).to.equal('Invalid date');
     });
 });

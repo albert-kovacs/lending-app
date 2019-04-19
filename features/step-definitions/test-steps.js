@@ -49,11 +49,11 @@ defineSupportCode(function ({
     When('I click on the delete button', () => {
         $('a:nth-child(2) > i').click();
         browser.alertAccept();
-        browser.pause(1000)
+        browser.pause(1000);
     });
 
     Then('I check if item is removed', () => {
         let isExisting = browser.isExisting(`body > div > div > table > tbody:nth-child(2) > tr > td:nth-child(1)`);
-        assert.equal(false, isExisting);
+        assert.strictEqual(false, isExisting);
     });
 });

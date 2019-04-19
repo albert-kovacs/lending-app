@@ -14,7 +14,7 @@ var item, toWhom, email, when, mailOptions;
 var actualDate = new Date().toJSON().slice(0, 10);
 var actualDateFixedFormat = new Date(actualDate);
 
-cron.schedule('*/30 * * * * *', function () {
+cron.schedule('*/10 * * * * *', function () {
     console.log('---------------------');
     logger.info('Running Cron Job');
 
@@ -46,6 +46,15 @@ cron.schedule('*/30 * * * * *', function () {
                     }
                 });
 
+                // var transporter = nodemailer.createTransport({
+                //     host: 'smtp.mailtrap.io',
+                //     port: 2525,
+                //     auth: {
+                //         user: '8a5bffbe3e083e',
+                //         pass: '3db4e5da9a5df7'
+                //     }
+                // });
+
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
                         logger.error(error);
@@ -68,3 +77,4 @@ cron.schedule('*/30 * * * * *', function () {
             logger.info('no item to return');
         });
 });
+

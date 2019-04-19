@@ -1,3 +1,7 @@
+import {
+    expect
+} from 'chai';
+
 describe(`Test data`, function () {
     it(`should get back correct data from "List" page`, () => {
         browser.url('http://localhost:3000/record');
@@ -17,7 +21,17 @@ describe(`Test data`, function () {
 
         $('[type="submit"]').click();
 
-        $('a:nth-child(2) > i').click();
+        $('[class="fas fa-pencil-alt fa-lg"]').click();
+
+        const newItem = 'Pen';
+        $(`[name="item"]`).setValue(newItem);
+
+        $('[type="submit"]').click();
+
+        const itemBack = $(`td:nth-child(1)`).getText();
+        expect(newItem).to.equal(itemBack);
+
+        $(`[class="fa fa-trash fa-lg"]`).click();
 
         browser.alertAccept();
     });
