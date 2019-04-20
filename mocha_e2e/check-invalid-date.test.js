@@ -1,8 +1,8 @@
-process.env.NODE_ENV = 'test';
-
 import {
     expect
 } from 'chai';
+
+process.env.NODE_ENV = 'test';
 
 describe(`Test invalid date`, function () {
     it(`should get back "Invalid date" message from "List" page`, () => {

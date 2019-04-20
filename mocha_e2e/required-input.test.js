@@ -1,6 +1,6 @@
-process.env.NODE_ENV = 'test';
-
 import { expect } from 'chai';
+
+process.env.NODE_ENV = 'test';
 
 describe(`Test input`, function () {
     it(`should get field is required message`, () => {

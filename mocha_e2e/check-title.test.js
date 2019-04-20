@@ -1,6 +1,6 @@
-process.env.NODE_ENV = 'test';
-
 import { expect } from 'chai';
+
+process.env.NODE_ENV = 'test';
 
 describe(`Test homepage`, function () {
     it(`should get the correct page title`, () => {

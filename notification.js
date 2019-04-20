@@ -77,4 +77,3 @@ cron.schedule('*/10 * * * * *', function () {
             logger.info('no item to return');
         });
 });
-

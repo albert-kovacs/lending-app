@@ -1,8 +1,8 @@
-process.env.NODE_ENV = 'test';
-
 import {
     expect
 } from 'chai';
+
+process.env.NODE_ENV = 'test';
 
 describe(`Check delete`, function () {
     it(`should delete record`, () => {

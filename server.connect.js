@@ -1,5 +1,7 @@
 const log4js = require('log4js');
-const { traceLogConfig } = require('./config/app-settings').log4js;
+const {
+    traceLogConfig
+} = require('./config/app-settings').log4js;
 log4js.configure(traceLogConfig);
 const logger = log4js.getLogger();
 

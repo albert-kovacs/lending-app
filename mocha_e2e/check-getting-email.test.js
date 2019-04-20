@@ -1,8 +1,8 @@
-process.env.NODE_ENV = 'test';
-
 import {
     expect
 } from 'chai';
+
+process.env.NODE_ENV = 'test';
 
 describe(`Test notification function`, function () {
     it(`should receive a notification email`, () => {

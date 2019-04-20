@@ -40,7 +40,7 @@ function insertRecords (req, res) {
                 res.render('pages/add', {
                     viewTitle: 'Add',
                     record: req.body
-                });
+                })
             }
             logger.error('Error during record insertion : ' + err);
         }
@@ -70,9 +70,10 @@ function updateRecord (req, res) {
 router.get('/list', (req, res) => {
     Record.find((err, docs) => {
         if (!err) {
-            res.render('pages/list', {
-                list: docs
-            });
+            res.status(200).send(notes)
+            // res.render('pages/list', {
+            //     list: docs
+            // });
             logger.info('Records list retrieved.');
         } else {
             logger.error('Error in retrieving records list :' + err);

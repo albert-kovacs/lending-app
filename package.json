@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.connect.js",
-    "unit": "mocha tests/*.js --exit --timeout 10000",
+    "test:unit": "mocha unit_tests/*.js --exit --timeout 30000",
     "test:mocha": "./node_modules/.bin/wdio wdio.mocha.conf.js",
     "test:cucumber": "./node_modules/.bin/wdio wdio.cucumber.conf.js",
     "test:visualregression": "./node_modules/.bin/wdio wdio.visualregression.conf.js",
@@ -44,6 +44,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "log4js": "^4.1.0",
     "mockgoose": "^8.0.1",
+    "supertest": "^4.0.2",
     "wdio-allure-reporter": "^0.8.3",
     "wdio-cucumber-framework": "^2.2.8",
     "wdio-mocha-framework": "^0.6.4",
