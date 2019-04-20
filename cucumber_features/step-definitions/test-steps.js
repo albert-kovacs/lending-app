@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 const assert = require('assert');
 
 let {
@@ -53,7 +55,7 @@ defineSupportCode(function ({
     });
 
     Then('I check if item is removed', () => {
-        let isExisting = browser.isExisting(`body > div > div > table > tbody:nth-child(2) > tr > td:nth-child(1)`);
+        let isExisting = browser.isExisting(`td:nth-child(1)`);
         assert.strictEqual(false, isExisting);
     });
 });

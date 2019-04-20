@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 import {
     expect
 } from 'chai';
@@ -21,21 +23,17 @@ describe(`Test data`, function () {
 
         $('[type="submit"]').click();
 
+        $('[class="fas fa-pencil-alt fa-lg"]').click();
+
+        const newItem = 'Pen';
+        $(`[name="item"]`).setValue(newItem);
+
+        $('[type="submit"]').click();
+
         const itemBack = $(`td:nth-child(1)`).getText();
-        const toWhomBack = $(`td:nth-child(2)`).getText();
-        const emailBack = $(`td:nth-child(3)`).getText();
-        let whenBack = $(`td:nth-child(4)`).getText();
-        const deadlineBack = $(`td:nth-child(5)`).getText();
-        const commentsBack = $(`td:nth-child(6)`).getText();
+        expect(newItem).to.equal(itemBack);
 
-        expect(item).to.equal(itemBack);
-        expect(toWhom).to.equal(toWhomBack);
-        expect(email).to.equal(emailBack);
-        expect(when).to.equal(whenBack);
-        expect(deadline).to.equal(deadlineBack);
-        expect(comments).to.equal(commentsBack);
-
-        $('a:nth-child(2) > i').click();
+        $(`[class="fa fa-trash fa-lg"]`).click();
 
         browser.alertAccept();
     });

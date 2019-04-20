@@ -33,7 +33,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './features/**/*.feature'
+        './cucumber_features/**/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -166,7 +166,7 @@ exports.config = {
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     cucumberOpts: {
-        require: ['./features/step-definitions/test-steps.js'], // <string[]> (file/dir) require files before executing features
+        require: ['./cucumber_features/step-definitions/test-steps.js'], // <string[]> (file/dir) require files before executing features
         backtrace: false, // <boolean> show full backtrace for errors
         compiler: [], // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false, // <boolean> invoke formatters without executing steps

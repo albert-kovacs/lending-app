@@ -1,28 +1,31 @@
+process.env.NODE_ENV = 'test';
+
 import {
     expect
 } from 'chai';
 
-describe(`Test notification function`, function () {
-    it(`should receive a notification email`, () => {
+describe(`Check delete`, function () {
+    it(`should delete record`, () => {
         browser.url('http://localhost:3000/record');
 
-        const item = 'Pen';
+        const item = 'Book';
         $(`[name="item"]`).setValue(item);
-        const toWhom = 'Geza Toth';
+        const toWhom = 'John Doe';
         $(`[name="toWhom"]`).setValue(toWhom);
-        const email = 'itsmegezatoth@gmail.com';
+        const email = 'john.doe@email.com';
         $(`[name="email"]`).setValue(email);
         const when = '2019-01-01';
         $(`[name="when"]`).setValue(when);
-        const deadline = '2019-04-18';
+        const deadline = '2019-03-01';
         $(`[name="deadline"]`).setValue(deadline);
         const comments = 'some comments...';
         $(`[name="comments"]`).setValue(comments);
 
         $('[type="submit"]').click();
-
-        $('a:nth-child(2) > i').click();
-
+        $(`[class="fa fa-trash fa-lg"]`).click();
         browser.alertAccept();
+        browser.pause(100);
+        let isExisting = browser.isExisting(`td:nth-child(1)`);
+        expect(isExisting).to.equal(false);
     });
 });

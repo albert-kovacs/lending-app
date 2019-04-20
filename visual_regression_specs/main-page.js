@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 let expect = require('chai').expect;
 
 function evaluate (results) {
