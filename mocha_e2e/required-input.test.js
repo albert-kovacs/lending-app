@@ -1,10 +1,6 @@
-import { expect } from 'chai';
-
-process.env.NODE_ENV = 'test';
-
 describe(`Test input`, function () {
     it(`should get field is required message`, () => {
-        browser.url('http://localhost:3000/record');
+        browser.url('/record');
 
         $('[type="submit"]').click();
 

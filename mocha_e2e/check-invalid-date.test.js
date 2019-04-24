@@ -1,12 +1,6 @@
-import {
-    expect
-} from 'chai';
-
-process.env.NODE_ENV = 'test';
-
 describe(`Test invalid date`, function () {
     it(`should get back "Invalid date" message from "List" page`, () => {
-        browser.url('http://localhost:3000/record');
+        browser.url('/record');
 
         const item = 'Book';
         $(`[name="item"]`).setValue(item);

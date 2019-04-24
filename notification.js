@@ -46,15 +46,6 @@ cron.schedule('*/10 * * * * *', function () {
                     }
                 });
 
-                // var transporter = nodemailer.createTransport({
-                //     host: 'smtp.mailtrap.io',
-                //     port: 2525,
-                //     auth: {
-                //         user: '8a5bffbe3e083e',
-                //         pass: '3db4e5da9a5df7'
-                //     }
-                // });
-
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
                         logger.error(error);

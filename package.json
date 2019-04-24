@@ -5,9 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.connect.js",
-    "test:unit": "mocha unit_tests/*.js --exit --timeout 30000",
-    "test:mocha": "./node_modules/.bin/wdio wdio.mocha.conf.js",
-    "test:cucumber": "./node_modules/.bin/wdio wdio.cucumber.conf.js",
+    "test:unit": "mocha unit_tests/*.js --exit --timeout 20000",
+    "test:integration": "mocha integration_tests/*.js --exit --timeout 20000",
+    "test:e2e": "./node_modules/.bin/wdio wdio.mocha.conf.js",
+    "test:features": "./node_modules/.bin/wdio wdio.cucumber.conf.js",
     "test:visualregression": "./node_modules/.bin/wdio wdio.visualregression.conf.js",
     "lint": "./node_modules/.bin/eslint ./",
     "lint:fix": "./node_modules/.bin/eslint ./ --fix",
@@ -21,12 +22,14 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "imap": "^0.8.19",
+    "lodash": "^4.17.11",
     "mailslurp-client": "^3.0.14",
     "mocha": "^6.1.2",
     "moment": "^2.24.0",
     "mongoose": "^5.4.19",
     "node-cron": "^2.0.3",
-    "nodemailer": "^6.1.0"
+    "nodemailer": "^6.1.0",
+    "sleep": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",

@@ -1,12 +1,6 @@
-import {
-    expect
-} from 'chai';
-
-process.env.NODE_ENV = 'test';
-
 describe(`Test data`, function () {
     it(`should get back correct data from "List" page`, () => {
-        browser.url('http://localhost:3000/record');
+        browser.url('/record');
 
         const item = 'Book';
         $(`[name="item"]`).setValue(item);

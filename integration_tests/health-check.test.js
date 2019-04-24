@@ -1,4 +1,3 @@
-process.env.NODE_ENV = 'test';
 require('../server.connect');
 const app = require('../server');
 const chai = require('chai');

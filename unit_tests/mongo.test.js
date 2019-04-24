@@ -1,5 +1,6 @@
 process.env.NODE_ENV = 'test';
 const assert = require('assert');
+require('../server.connect');
 require('../models/record.model.js');
 const mongoose = require('mongoose');
 const Record = mongoose.model('Record');
