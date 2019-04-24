@@ -1,6 +1,11 @@
 version: 2
 jobs:
   build:
+    filters:
+       branches:
+        only: 
+          - master
+       
     docker:
       - image: klamping/wdio-ff
 
@@ -14,5 +19,3 @@ jobs:
       - run: npm run test:features
       - run: npm run test:visualregression
       - run: npm run test:e2e
-
-

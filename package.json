@@ -47,6 +47,7 @@
     "mockgoose": "^8.0.1",
     "supertest": "^4.0.2",
     "wdio-allure-reporter": "^0.8.3",
+    "wdio-browserstack-service": "^0.1.18",
     "wdio-cucumber-framework": "^2.2.8",
     "wdio-mocha-framework": "^0.6.4",
     "wdio-sauce-service": "^0.4.14",

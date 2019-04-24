@@ -1,4 +1,8 @@
 exports.config = {
+    user: 'albertkovacs1',
+    key: 'dok8ryfAzNgjx6Jok7Gh',
+    browserstackLocal: true,
+
     //
     // ====================
     // Runner Configuration
@@ -46,7 +50,8 @@ exports.config = {
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [{
-        browserName: 'firefox'
+        browserName: 'firefox',
+        'browserstack.local': true
     }],
     //
     // ===================
@@ -82,7 +87,7 @@ exports.config = {
     baseUrl: 'http://localhost:3000',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 50000,
     //
     // Default timeout in milliseconds for request
     // if Selenium Grid doesn't send response
@@ -96,11 +101,7 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     // services: ['selenium-standalone'],
-    services: ['selenium-standalone'],
-    // services: ['sauce'],
-    // user: process.env.SAUCE_USERNAME,
-    // key: process.env.SAUCE_ACCESS_KEY,
-    // sauceConnect: true,
+    services: ['selenium-standalone', 'browserstack'],
     // ...
     //
     // Framework you want to run your specs with.
