@@ -1,11 +1,13 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: klamping/wdio-ff
     filters:
        branches:
-       only: master
+        only: 
+          - master
+       
+    docker:
+      - image: klamping/wdio-ff
 
     steps:
       - checkout
