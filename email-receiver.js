@@ -1,7 +1,7 @@
 var Imap = require('imap');
 var inspect = require('util').inspect;
 var fs = require('fs');
-var fileStream;
+// var fileStream;
 
 var imap = new Imap({
     user: 'itsmegezatoth@gmail.com',
