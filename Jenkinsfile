@@ -11,12 +11,25 @@ pipeline {
                 sh "npm run lint"
             }
         }
-        stage('Push to new repo') {
+        stage('Running unit tests') { 
             steps {
-                sshagent(['git@github.com:albert-kovacs/test.git']) {
-                    sh "git push origin master"
-                }
+                sh "npm run test:unit"
             }
         }
+        stage('Running cucumber feature tests') { 
+            steps {
+                sh "npm run test:features"
+            }
+        }     
+        stage('Running visual regression test') { 
+            steps {
+                sh "npm run test:visualregression"
+            }
+        }         
+        stage('Running visual e2e tests') { 
+            steps {
+                sh "npm run test:e2e"
+            }
+        }            
     }
 }
