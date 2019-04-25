@@ -23,6 +23,9 @@ describe(`Test notification function`, function () {
 
         browser.pause(10000);
 
+        $(`[class="fa fa-trash fa-lg"]`).click();
+        browser.alertAccept();
+
         sender = JSON.stringify(sender);
 
         expect(sender).to.contain('lending.app.notice@gmail.com');

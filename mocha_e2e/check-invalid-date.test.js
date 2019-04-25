@@ -10,7 +10,7 @@ describe(`Test invalid date`, function () {
         $(`[name="email"]`).setValue(email);
         const when = '01-01-2019';
         $(`[name="when"]`).setValue(when);
-        const deadline = '2019-03-01';
+        const deadline = '03-01-2019';
         $(`[name="deadline"]`).setValue(deadline);
         const comments = 'some comments...';
         $(`[name="comments"]`).setValue(comments);
