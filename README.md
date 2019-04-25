@@ -16,6 +16,7 @@ To build and run this project you will need the following:
 * git clone git@github.com:albert-kovacs/lending-app.git
 * cd ./lending-app
 * npm install
+* sudo service mongod start
 * npm start
 ```
 Now when you visit http://localhost:3000 from your web browser you will be able to use the application.
