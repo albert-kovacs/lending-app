@@ -23,9 +23,8 @@ describe(`Test notification function`, function () {
 
         browser.pause(10000);
 
-        var sender = JSON.stringify(sender);
+        sender = JSON.stringify(sender);
 
         expect(sender).to.contain('lending.app.notice@gmail.com');
-
     });
 });

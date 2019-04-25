@@ -8,7 +8,7 @@ var imap = new Imap({
     tls: true
 });
 
-function openInbox(cb) {
+function openInbox (cb) {
     imap.openBox('INBOX', true, cb);
 }
 
@@ -32,7 +32,6 @@ imap.once('ready', function () {
                     stream.on('end', function () {
                         module.exports.result = result;
                     });
-
                 });
             });
 
@@ -43,11 +42,9 @@ imap.once('ready', function () {
                 console.log('Done fetching all messages!');
                 imap.end();
             });
-
         });
     });
 });
-
 
 imap.once('error', function (err) {
     console.log(err);
