@@ -1,9 +1,9 @@
 const log4js = require('log4js');
-const { traceLogConfig } = require('./config/app-settings').log4js;
+const { traceLogConfig } = require('../../config/app-settings').log4js;
 log4js.configure(traceLogConfig);
 const logger = log4js.getLogger();
 
-const creds = require('./gmail_creds');
+const creds = require('../../gmail_creds');
 
 const cron = require('node-cron');
 const mongoose = require('mongoose');
@@ -14,7 +14,7 @@ var item, toWhom, email, when, mailOptions;
 var actualDate = new Date().toJSON().slice(0, 10);
 var actualDateFixedFormat = new Date(actualDate);
 
-cron.schedule('*/60 * * * * *', function () {
+cron.schedule('*/5 * * * * *', function () {
     console.log('---------------------');
     logger.info('Running Cron Job');
 
