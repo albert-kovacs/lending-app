@@ -19,7 +19,7 @@ describe(`Test notification function`, function () {
 
         browser.pause(10000);
 
-        var sender = require('../email-receiver');
+        var sender = require('../utils/email-receiver');
 
         browser.pause(10000);
 
