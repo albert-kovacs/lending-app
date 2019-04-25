@@ -19,5 +19,3 @@ jobs:
       - run: npm run test:features
       - run: npm run test:visualregression
       - run: npm run test:e2e
-
-
