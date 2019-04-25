@@ -17,7 +17,7 @@ describe(`Test notification function`, function () {
 
         $('[type="submit"]').click();
 
-        browser.pause(5000);
+        browser.pause(10000);
 
         var sender = require('../email-receiver');
 
