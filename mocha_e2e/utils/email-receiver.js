@@ -1,7 +1,4 @@
 var Imap = require('imap');
-var inspect = require('util').inspect;
-var fs = require('fs');
-var fileStream;
 
 var imap = new Imap({
     user: 'itsmegezatoth@gmail.com',
@@ -18,24 +15,23 @@ function openInbox (cb) {
 imap.once('ready', function () {
     openInbox(function (err, box) {
         if (err) throw err;
-        imap.search(['UNSEEN', ['SINCE', 'June 15, 2018']], function (err, results) {
+        imap.search(['UNSEEN'], function (err, results) {
             if (err) throw err;
-            var f = imap.fetch(results, {
-                bodies: ''
+            var f = imap.fetch(results[0], {
+                bodies: 'HEADER.FIELDS (FROM)'
             });
-            f.on('message', function (msg, seqno) {
-                console.log('Message #%d', seqno);
-                var prefix = '(#' + seqno + ') ';
 
-                msg.on('body', function (stream, info) {
-                    console.log(prefix + 'Body');
-                    stream.pipe(fs.createWriteStream('msg-' + seqno + '-body.txt'));
-                });
-                msg.once('attributes', function (attrs) {
-                    console.log(prefix + 'Attributes: %s', inspect(attrs, false, 8));
-                });
-                msg.once('end', function () {
-                    console.log(prefix + 'Finished');
+            f.on('message', function (msg) {
+                msg.on('body', function (stream) {
+                    let result = '';
+
+                    stream.on('data', function (chunk) {
+                        result += chunk;
+                    });
+
+                    stream.on('end', function () {
+                        module.exports.result = result;
+                    });
                 });
             });
 

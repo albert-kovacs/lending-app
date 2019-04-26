@@ -33,7 +33,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './visual_regression_specs/**/*.js'
+        './visual_regression/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -124,9 +124,9 @@ exports.config = {
 
     visualRegression: {
         compare: new VisualRegressionCompare.LocalCompare({
-            referenceName: getScreenshotName(path.join(process.cwd(), 'screenshots/reference')),
-            screenshotName: getScreenshotName(path.join(process.cwd(), 'screenshots/screen')),
-            diffName: getScreenshotName(path.join(process.cwd(), 'screenshots/diff')),
+            referenceName: getScreenshotName(path.join(process.cwd(), 'visual_regression/screenshots/reference')),
+            screenshotName: getScreenshotName(path.join(process.cwd(), 'visual_regression/screenshots/screen')),
+            diffName: getScreenshotName(path.join(process.cwd(), 'visual_regression/screenshots/diff')),
             misMatchTolerance: 0.01
         }),
         viewportChangePause: 300,
