@@ -1,2 +1,2 @@
-npm install
+web: npm install
 web: npm start
