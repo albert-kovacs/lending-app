@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
-const DB_URI = 'mongodb://localhost:27017/LendingAppDB';
+const DB_URI = 'mongodb+srv://albert-kovacs:albert-kovacs@lendingapp-hgwn0.mongodb.net/test?retryWrites=true';
 // const DB_URI = 'mongodb://mongo:27017/LendingAppDB'; //docker
 
 function connect () {
