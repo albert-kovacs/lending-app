@@ -1,8 +1,4 @@
 exports.config = {
-    user: 'albertkovacs1',
-    key: 'dok8ryfAzNgjx6Jok7Gh',
-    browserstackLocal: true,
-
     //
     // ====================
     // Runner Configuration
@@ -49,10 +45,22 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
-        browserName: 'firefox',
-        'browserstack.local': true
-    }],
+    // capabilities: [{
+    //     browserName: 'firefox',
+    //     'browserstack.local': true
+    // }],
+
+    capabilities: {
+        'os': 'Windows',
+        'os_version': '10',
+        'browserName': 'Firefox',
+        'browser_version': '67.0 beta',
+        'browserstack.local': 'false',
+        'browserstack.selenium_version': '3.5.2',
+        'browserstack.user': 'albertkovacs1',
+        'browserstack.key': 'dok8ryfAzNgjx6Jok7Gh'
+    },
+
     //
     // ===================
     // Test Configurations
