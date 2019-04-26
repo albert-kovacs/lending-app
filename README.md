@@ -13,11 +13,11 @@ To build and run this project you will need the following:
 ## Quick start
 
 ```
-* git clone git@github.com:albert-kovacs/lending-app.git
-* cd ./lending-app
-* npm install
-* sudo service mongod start
-* npm start
+1. git clone git@github.com:albert-kovacs/lending-app.git
+2. cd ./lending-app
+3. npm install
+4. sudo service mongod start
+5. npm start
 ```
 Now when you visit http://localhost:3000 from your web browser you will be able to use the application.
 
