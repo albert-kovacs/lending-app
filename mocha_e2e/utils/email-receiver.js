@@ -9,7 +9,7 @@ module.exports.getSenderAddress = () => {
         tls: true
     });
 
-    function openInbox(cb) {
+    function openInbox (cb) {
         imap.openBox('INBOX', true, cb);
     }
 
@@ -56,4 +56,4 @@ module.exports.getSenderAddress = () => {
     });
 
     imap.connect();
-}
+};

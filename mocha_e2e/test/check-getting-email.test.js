@@ -27,7 +27,7 @@ describe(`Test notification function`, function () {
 
         browser.pause(10000);
 
-        console.log(sender)
+        console.log(sender);
 
         $(`[class="fa fa-trash fa-lg"]`).click();
         browser.alertAccept();
