@@ -2,6 +2,11 @@
 
 Lending App is a lent item tracking platform with a notifications function.
 
+## Heroku
+```
+http://lending-app.herokuapp.com/record
+```
+
 ## Prerequisites
 To build and run this project you will need the following:
 ```
