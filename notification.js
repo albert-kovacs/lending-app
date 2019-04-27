@@ -32,7 +32,7 @@ cron.schedule('*/30 * * * * *', function () {
                 from: 'Lending App <lending.app.notice@gmail.com>',
                 to: email,
                 subject: 'Hello ' + toWhom,
-                text: 'Please give me back my ' + item + ' you borrowed on ' + formatDate(when) + '.'
+                text: 'Please give me back my ' + item + ' you borrowed on ' + when + '.'
             };
 
             nodemailer.createTestAccount((account) => {
