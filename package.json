@@ -4,7 +4,6 @@
   "description": "Lending App",
   "main": "server.js",
   "scripts": {
-    "prestart": "next build",
     "start": "node server.connect.js",
     "test:unit": "mocha unit_tests/*.js --exit --timeout 20000",
     "test:integration": "mocha integration_tests/*.js --exit --timeout 20000",
