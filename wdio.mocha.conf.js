@@ -1,4 +1,10 @@
+var browserstack = require('browserstack-local');
+
+
 exports.config = {
+    user: 'albertkovacs1',
+    key: 'dok8ryfAzNgjx6Jok7Gh',
+    browserstackLocal: true,
     //
     // ====================
     // Runner Configuration
@@ -45,21 +51,12 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    // capabilities: [{
-    //     browserName: 'firefox',
-    //     'browserstack.local': true
-    // }],
 
-    capabilities: {
-        'os': 'Windows',
-        'os_version': '10',
-        'browserName': 'Firefox',
-        'browser_version': '67.0 beta',
-        'browserstack.local': 'false',
-        'browserstack.selenium_version': '3.5.2',
-        'browserstack.user': 'albertkovacs1',
-        'browserstack.key': 'dok8ryfAzNgjx6Jok7Gh'
-    },
+    capabilities: [{
+        browser: 'chrome',
+        'browserstack.local': true
+    }],
+
 
     //
     // ===================
@@ -109,7 +106,7 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     // services: ['selenium-standalone'],
-    services: ['selenium-standalone', 'browserstack'],
+    services: ['browserstack'],
     // ...
     //
     // Framework you want to run your specs with.
@@ -172,8 +169,20 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
     onPrepare: function (config, capabilities) {
-        require('./server.connect');
+        console.log("Connecting local");
+        return new Promise(function (resolve, reject) {
+            exports.bs_local = new browserstack.Local();
+            exports.bs_local.start({
+                'key': exports.config.key
+            }, function (error) {
+                if (error) return reject(error);
+                console.log('Connected. Now testing...');
+
+                resolve();
+            });
+        });
     },
+
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
      * to manipulate configurations depending on the capability or spec.
@@ -192,7 +201,7 @@ exports.config = {
     before: function (capabilities, specs) {
         require('@babel/register');
         expect = require('chai').expect;
-    }
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -271,8 +280,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function (capabilties, specs) {
+        exports.bs_local.stop(function () {});
+    }
     /**
      * Gets executed when a refresh happens.
      * @param {String} oldSessionId session ID of the old session
